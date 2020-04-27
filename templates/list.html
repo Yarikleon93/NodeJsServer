@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../funcToEvent.js"></script>
+  </head>
+  <body>
+    <table border="1" width="100%" cellpadding="5">
+      <th>number</th>
+      <th>title</th>
+      <th><a href="/homeworks/new">Создать новое дз</a></th>
+      {{#rows}}
+      <tr>
+        <td>{{number}}</td>
+        <td><a href="/homeworks/{{id}}">{{title}}</a></td>
+        <td><button name="{{id}}" onclick="buttonClick()" type="button">X</button></td>
+      </tr>
+      {{/rows}}
+    </table>
+  </body>
+</html>

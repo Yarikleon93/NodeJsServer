@@ -8,10 +8,18 @@
     "start": "node index.js",
     "lint": "eslint NodeJsServer"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
     "eslint": "6.8.0"
+  },
+  "dependencies": {
+    "mustache": "^4.0.1"
   }
 }
