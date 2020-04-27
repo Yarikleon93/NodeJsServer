@@ -6,22 +6,33 @@ export class Collection {
     this.data = join(process.cwd(), "data", data);
   }
 
-  readData() {
-    return fs.readFile(this.data, "utf-8")
-        .then((fileData) => JSON.parse(fileData));
+  async readData() {
+    const fileData = await fs.readFile(this.data, "utf-8");
+    return JSON.parse(fileData);
   }
 
   list() {
     return this.readData();
   }
 
-  getOneHw(id) {
-    return this.readData()
-        .then(fileData => fileData.find(item => item.id === id));
+  async getOneHw(id) {
+    const fileData = await this.readData();
+    return fileData.find(item => item.id === id);
   }
-  deleteOneHw(id) {
-    return this.readData()
-        .then(fileData => JSON.stringify(fileData.filter(item => item.id != id)))
-        .then(NewFileData => fs.writeFile(this.data, NewFileData));
+  async deleteOneHw(id) {
+    const fileData = await this.readData();
+    const NewFileData = JSON.stringify(fileData.filter(item => item.id != id))
+    return await fs.writeFile(this.data, NewFileData);
+  }
+  async updateOne(id, newBody) {
+    const fileData = await this.readData();
+    const updateBody = fileData.map((homework) => (homework.id === id) ? newBody : homework);
+    return await fs.writeFile(this.data, JSON.stringify(updateBody));
+  }
+  async insertOne(addBody) {
+    const fileData = await this.readData();
+    addBody.id = Math.random().toString(16).slice(-12) + Math.random().toString(16).slice(-12);
+    fileData.push(addBody);
+    return await fs.writeFile(this.data, JSON.stringify(fileData));
   }
 }

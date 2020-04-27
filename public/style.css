@@ -1,0 +1,21 @@
+body{
+    background-color: gainsboro;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+label{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+button[type=submit]{
+    background-color: lawngreen;
+}
+button[type=button]{
+    background-color: orangered;
+}
+button[type=reset]{
+    background-color: yellow;
+}
